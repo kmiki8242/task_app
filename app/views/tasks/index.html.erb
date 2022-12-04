@@ -1,5 +1,63 @@
-<div id="tasks">
-  <% @tasks.each do |task| %>
-    <%= render task %>
-  <% end %>
+<div class="wrapper">
+  <div class="column uncomplete-list">
+    <h2>タスク一覧</h2>
+    <div class="uncomplete-tasks">
+      <% @tasks.each do |task| %>
+        <ul class="uncomplete-task-item">
+          <li>
+            <div class="first-line">
+              <h3>
+                <i class="fa-regular fa-circle"></i>
+                <%= link_to task.name, task %>
+                <%= link_to task, method: :delete do %>
+                  <i class="fa-regular fa-trash-can"></i>
+                <% end %>
+              </h3><br>
+            </div>
+            <div class="second-line">
+              <i class="uncomplete-start-date-icon fa-solid fa-calendar"></i>
+                <%= task.start_date %>
+              <i class="uncomplete-end-date-icon fa-regular fa-calendar-check"></i>
+                <%= task.end_date %>
+            </div>
+          </li>
+        </ul>
+      <% end %>
+    </div>
+    <div class="column add-task">
+      <h3>
+        <i class="fa-solid fa-plus"></i>
+        <%= link_to "タスク追加", new_task_path %>
+      </h3>
+    </div>
+
+  </div>
+
+  <div class="column complete-list">
+    <h2>完了済み</h2>
+    <div class="complete-tasks">
+      <% @tasks.each do |task| %>
+        <ul class="complete-task-item">
+          <li>
+            <div class="first-line">
+              <h3>
+                <i class="fa-regular fa-circle"></i>
+                <%= link_to task.name, task %>
+                <%= link_to task, method: :delete do %>
+                  <i class="fa-regular fa-trash-can"></i>
+                <% end %>
+              </h3><br>
+            </div>
+            <div class="second-line">
+              <i class="fa-solid fa-calendar"></i>
+                <%= task.start_date %>
+              <i class="fa-regular fa-calendar-check"></i>
+                <%= task.end_date %>
+            </div>
+          </li>
+        </ul>
+      <% end %>
+    </div>
+  </div>
+
 </div>
