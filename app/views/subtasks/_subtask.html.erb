@@ -25,3 +25,24 @@
   </p>
 
 </div>
+
+<div class="complete-tasks">
+      <% @subtasks.each do |subtask| %>
+        <ul>
+          <li>
+            <div class="subtask">
+              <h3>
+                <i class="fa-regular fa-circle"></i>
+                <%= link_to subtask.name, subtask %>
+              </h3><br>
+            </div>
+            <div class="second-line">
+              <i class="fa-solid fa-calendar"></i>
+                <%= subtask.start_date %>
+              <i class="fa-regular fa-calendar-check"></i>
+                <%= subtask.end_date %>
+            </div>
+          </li>
+        </ul>
+      <% end %>
+    </div>

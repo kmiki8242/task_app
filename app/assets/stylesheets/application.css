@@ -13,6 +13,12 @@
  *= require_tree .
  *= require_self
  */
+@media all and (min-width: 500px) {
+  .wrapper {
+    display: flex;
+  }
+}
+
 h1, h2{
   border-bottom: solid;
   border-color: #FFFFFF;
@@ -32,7 +38,7 @@ i{
   padding: 0 5px 5px 10px;
 }
 
-ul {
+ul{
   list-style-type: none;
 }
 
@@ -58,11 +64,11 @@ br {
   background-color: #9a9797;
 }
 
-.uncomplete-tasks, .complete-list{
+.uncomplete-list, .complete-list{
   display: flex;
 }
 
-.fa-calendar-check{
+.uncomplete-end-date-icon{
   padding-left: 40px;
 }
 
@@ -80,8 +86,12 @@ br {
   padding: 0 0 0 10px;
 }
 
-@media all and (min-width: 500px) {
-  .wrapper {
-    display: flex;
-  }
+/* task-detail */
+.detail-column-name{
+  display: flex;
+  width: 500px;
+}
+
+.detail-name{
+  margin-right: auto;
 }
