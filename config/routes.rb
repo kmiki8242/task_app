@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  get "/", to: "tasks#index"
+  resources :subtasks
+  root to: "tasks#index"
   resources :tasks
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

@@ -1,13 +1,11 @@
-class CreateTasks < ActiveRecord::Migration[7.0]
+class CreateSubtasks < ActiveRecord::Migration[7.0]
   def change
-    create_table :tasks do |t|
+    create_table :subtasks do |t|
       t.string :name,             null: false
       t.boolean :complete_status, null: false,  default: false
       t.date :start_date,         null: false
       t.date :end_date
-      t.text :url
-      t.string :image
-      t.text :note
+      t.string :task_id
 
       t.timestamps
     end
