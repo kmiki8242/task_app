@@ -1,37 +1,48 @@
-<div id="<%= dom_id task %>">
-  <p>
-    <strong>Name:</strong>
-    <%= task.name %>
-  </p>
-
-  <p>
-    <strong>Complete status:</strong>
-    <%= task.complete_status %>
-  </p>
-
-  <p>
-    <strong>Start date:</strong>
-    <%= task.start_date %>
-  </p>
-
-  <p>
-    <strong>End date:</strong>
-    <%= task.end_date %>
-  </p>
-
-  <p>
-    <strong>Url:</strong>
-    <%= task.url %>
-  </p>
-
-  <p>
-    <strong>Image:</strong>
-    <%= task.image %>
-  </p>
-
-  <p>
-    <strong>Note:</strong>
-    <%= task.note %>
-  </p>
-
+<div class="wrapper">
+  <div class="column uncomplete-list">
+    <h2>タスク一覧</h2>
+    <div class="uncomplete-tasks">
+      <ul>
+        <li>
+          <div class="first-line">
+            <h3>
+              <i class="fa-regular fa-circle"></i>
+                <%= link_to task.name, task %>
+              <i class="fa-regular fa-trash-can"></i>
+            </h3></br>
+          </div>
+          <div class="second-line">
+            <i class="fa-solid fa-calendar"></i><%= task.start_date %>
+            <i class="fa-regular fa-calendar-check"></i><%= task.end_date %>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="column add-task">
+      <h3>
+        <i class="fa-solid fa-plus"></i>
+        <%= link_to "タスク追加", new_task_path %>
+      </h3>
+    </div>
+  </div>
+  <div class="column complete-list">
+    <h2>完了済み</h2>
+    <div class="complete-tasks">
+      <ul>
+        <li>
+          <div class="first-line">
+            <h3>
+              <i class="fa-regular fa-circle"></i>
+                <%= link_to task.name, task %>
+              <i class="fa-regular fa-trash-can"></i>
+            </h3></br>
+          </div>
+          <div class="second-line">
+            <i class="fa-solid fa-calendar"></i><%= task.start_date %>
+            <i class="fa-regular fa-calendar-check"></i><%= task.end_date %>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
 </div>

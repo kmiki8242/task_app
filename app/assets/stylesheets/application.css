@@ -13,3 +13,75 @@
  *= require_tree .
  *= require_self
  */
+h1, h2{
+  border-bottom: solid;
+  border-color: #FFFFFF;
+}
+
+h2{
+  padding-left:5px;
+  display:inline;
+}
+
+body{
+  background-color: #808080;
+  color: #FFFFFF;
+}
+
+i{
+  padding: 0 5px 5px 10px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+br {
+  display: block;
+  content: "";
+  margin: 10px 0;
+}
+
+.first-line{
+  text-indent: -1em;
+}
+
+.column {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.complete-list{
+  background-color: #9a9797;
+}
+
+.uncomplete-tasks, .complete-list{
+  display: flex;
+}
+
+.fa-calendar-check{
+  padding-left: 40px;
+}
+
+.second-line{
+  border-bottom: solid;
+  border-color: #FFFFFF;
+}
+
+.fa-trash-can{
+  float: right;
+  padding: 4px 0 0 0;
+}
+
+.add-task{
+  padding: 0 0 0 10px;
+}
+
+@media all and (min-width: 500px) {
+  .wrapper {
+    display: flex;
+  }
+}
