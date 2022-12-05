@@ -3,7 +3,8 @@ class TasksController < ApplicationController
 
   # GET /tasks or /tasks.json
   def index
-    @tasks = Task.all
+    @uncomplete_tasks = Task.where(complete_status: 'false')
+    @complete_tasks = Task.where(complete_status: 'true')
   end
 
   # GET /tasks/1 or /tasks/1.json
