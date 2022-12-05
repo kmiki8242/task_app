@@ -87,9 +87,12 @@ br {
 }
 
 /* task-detail */
-.detail-column-name{
+.detail-column{
   display: flex;
   width: 500px;
+  border-bottom: solid;
+  border-width: thin;
+  border-color: #FFFFFF;
 }
 
 .detail-name{

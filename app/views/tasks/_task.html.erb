@@ -5,7 +5,7 @@
       <ul class="task-detail-items">
         <%# 完了ステータス　%>
         <li class="detail-item no-wrap">
-          <div class="detail-column-name">
+          <div class="detail-column">
             <h3 class="detail-name">
               完了ステータス
             </h3>
@@ -16,7 +16,7 @@
         </li>
         <%# タスク名　%>
         <li class="detail-item no-wrap">
-          <div class="detail-column-name">
+          <div class="detail-column">
             <h3 class="detail-name">
               <i class="fa-solid fa-list-check"></i>
               タスク名
@@ -28,7 +28,7 @@
         </li><br>
         <%# 実施予定日　%>
         <li class="detail-item no-wrap">
-          <div class="detail-column-name">
+          <div class="detail-column">
             <h3 class="detail-name">
               <i class="fa-solid fa-calendar"></i>
               実施予定日
@@ -40,7 +40,7 @@
         </li><br>
         <%# 期限　%>
         <li class="detail-item no-wrap">
-          <div class="detail-column-name">
+          <div class="detail-column">
             <h3 class="detail-name">
               <i class="fa-regular fa-calendar-check"></i>
               期限
@@ -52,7 +52,7 @@
         </li><br>
         <%# 実施予定日　%>
         <li class="detail-item no-wrap">
-          <div class="detail-column-name">
+          <div class="detail-column">
             <h3 class="detail-name">
               <i class="fa-solid fa-link"></i>
                 リンク
@@ -64,7 +64,7 @@
         </li><br>
         <%# 期限　%>
         <li class="detail-item no-wrap">
-          <div class="detail-column-name">
+          <div class="detail-column">
             <h3 class="detail-name">
               <i class="fa-regular fa-image"></i>
               添付
@@ -75,7 +75,7 @@
           </div>
         </li><br>
         <li class="detail-item no-wrap">
-          <div class="detail-column-name">
+          <div class="detail-column">
             <h3 class="detail-name">
               <i class="fa-regular fa-note-sticky"></i>
               メモ
@@ -86,6 +86,8 @@
           </div>
         </li><br>
       </ul>
+      <%= link_to "編集", edit_task_path(@task) %>
+      <%= button_to "タスク全体を削除", @task, method: :delete %>
     </div>
   </div>
 
@@ -96,9 +98,9 @@
         <ul class="subtask-detail-items">
           <%# 完了ステータス_サブタスク %>
           <li class="detail-item no-wrap">
-            <div class="detail-column-name">
+            <div class="detail-column">
               <h3 class="detail-name">
-                完了ステータス_サブタスク
+                完了ステータス
               </h3>
               <h3>
                 <%= subtask.complete_status_subtask %>
@@ -107,7 +109,7 @@
           </li><br>
           <%# サブタスク名 %>
           <li class="detail-item no-wrap">
-            <div class="detail-column-name">
+            <div class="detail-column">
               <h3 class="detail-name">
                 <i class="fa-solid fa-list-check"></i>
                 サブタスク名
@@ -119,7 +121,7 @@
           </li><br>
           <%# 実施予定日_サブタスク %>
           <li class="detail-item no-wrap">
-            <div class="detail-column-name">
+            <div class="detail-column">
               <h3 class="detail-name">
                 <i class="fa-solid fa-calendar"></i>
                 実施予定日
@@ -131,7 +133,7 @@
           </li><br>
           <%# 期限_サブタスク %>
           <li class="detail-item no-wrap">
-            <div class="detail-column-name">
+            <div class="detail-column">
               <h3 class="detail-name">
                 <i class="fa-regular fa-calendar-check"></i>
                 期限
@@ -142,6 +144,12 @@
             </div>
           </li><br>
         </ul>
+      <%
+=begin%>
+ <%= button_to "編集", edit_subtask_path(@subtask) %>
+      <%= button_to "削除", @subtask, method: :delete %> 
+<%
+=end%>
       </div>
     <% end %>
 
@@ -191,7 +199,7 @@
         <ul class="task-detail-items">
           <%# 完了ステータス_サブタスク %>
           <li class="detail-item no-wrap">
-            <div class="detail-column-name">
+            <div class="detail-column">
               <h3 class="detail-name">
                 完了ステータス_サブタスク
               </h3>
@@ -202,7 +210,7 @@
           </li><br>
           <%# サブタスク名 %>
           <li class="detail-item no-wrap">
-            <div class="detail-column-name">
+            <div class="detail-column">
               <h3 class="detail-name">
                 <i class="fa-solid fa-list-check"></i>
                 サブタスク名
@@ -214,7 +222,7 @@
           </li><br>
           <%# 実施予定日_サブタスク %>
           <li class="detail-item no-wrap">
-            <div class="detail-column-name">
+            <div class="detail-column">
               <h3 class="detail-name">
                 <i class="fa-solid fa-calendar"></i>
                 実施予定日
@@ -226,7 +234,7 @@
           </li><br>
           <%# 期限_サブタスク %>
           <li class="detail-item no-wrap">
-            <div class="detail-column-name">
+            <div class="detail-column">
               <h3 class="detail-name">
                 <i class="fa-regular fa-calendar-check"></i>
                 期限
