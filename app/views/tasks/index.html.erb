@@ -2,23 +2,23 @@
   <div class="column uncomplete-list">
     <h2>タスク一覧</h2>
     <div class="uncomplete-tasks">
-      <% @tasks.each do |task| %>
+      <% @uncomplete_tasks.each do |u| %>
         <ul class="uncomplete-task-item">
           <li>
             <div class="first-line">
               <h3>
                 <i class="fa-regular fa-circle"></i>
-                <%= link_to task.name, task %>
-                <%= link_to task, method: :destroy do %>
+                <%= link_to u.name, u %>
+                <%= link_to u, method: :destroy do %>
                   <i class="fa-regular fa-trash-can"></i>
                 <% end %>
               </h3><br>
             </div>
             <div class="second-line">
               <i class="uncomplete-start-date-icon fa-solid fa-calendar"></i>
-                <%= task.start_date %>
+                <%= u.start_date %>
               <i class="uncomplete-end-date-icon fa-regular fa-calendar-check"></i>
-                <%= task.end_date %>
+                <%= u.end_date %>
             </div>
           </li>
         </ul>
@@ -36,23 +36,23 @@
   <div class="column complete-list">
     <h2>完了済み</h2>
     <div class="complete-tasks">
-      <% @tasks.each do |task| %>
+      <% @complete_tasks.each do |c| %>
         <ul class="complete-task-item">
           <li>
             <div class="first-line">
               <h3>
                 <i class="fa-regular fa-circle"></i>
-                <%= link_to task.name, task %>
-                <%= link_to task, method: :delete do %>
+                <%= link_to c.name, c %>
+                <%= link_to c, method: :delete do %>
                   <i class="fa-regular fa-trash-can"></i>
                 <% end %>
               </h3><br>
             </div>
             <div class="second-line">
               <i class="fa-solid fa-calendar"></i>
-                <%= task.start_date %>
+                <%= c.start_date %>
               <i class="fa-regular fa-calendar-check"></i>
-                <%= task.end_date %>
+                <%= c.end_date %>
             </div>
           </li>
         </ul>
