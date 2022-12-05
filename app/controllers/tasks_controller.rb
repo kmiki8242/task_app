@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: %i[ show edit update destroy ]
+  before_action :set_task, only: %i[ show edit create update destroy ]
 
   # GET /tasks or /tasks.json
   def index
@@ -9,8 +9,7 @@ class TasksController < ApplicationController
 
   # GET /tasks/1 or /tasks/1.json
   def show
-    @task = Task.find(params[:id])
-    @subtasks = @task.subtasks
+    @subtasks = @task.subtasks.where.not(name_subtask: [nil, ''])
   end
 
   # GET /tasks/new
@@ -21,12 +20,10 @@ class TasksController < ApplicationController
 
   # GET /tasks/1/edit
   def edit
-    @task = Task.find(params[:id])
   end
 
   # POST /tasks or /tasks.json
   def create
-    @task = Task.new(task_params)
     @subtask = Subtask.create
     @subtask.task_id = @task.id
     @subtask.save
@@ -44,7 +41,6 @@ class TasksController < ApplicationController
 
   # PATCH/PUT /tasks/1 or /tasks/1.json
   def update
-    @task = Task.find(params[:id])
     respond_to do |format|
       if @task.update(update_task_params)
         format.html { redirect_to task_url(@task), notice: "タスクを更新しました" }

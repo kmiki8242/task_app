@@ -1,10 +1,6 @@
 class Subtask < ApplicationRecord
   belongs_to :task, inverse_of: :subtasks
 
-  with_options presence: true do
-    validates :name_subtask, length: { in: 1..50 , message: " : 1~50文字で入力して下さい" }
-    validates :start_date_subtask
-  end
-
+  validates :name_subtask, length: { in: 0..50 , message: " : 50文字以内で入力して下さい" }
   validates :complete_status_subtask, inclusion: { in: [true, false] }
 end
