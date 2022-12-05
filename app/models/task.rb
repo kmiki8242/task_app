@@ -1,5 +1,6 @@
 class Task < ApplicationRecord
-  has_many :subtasks, dependent: :destroy
+  has_many :subtasks, dependent: :destroy, inverse_of: :task
+  accepts_nested_attributes_for :subtasks, allow_destroy: true
 
   validates :complete_status, inclusion: { in: [true, false] }
 

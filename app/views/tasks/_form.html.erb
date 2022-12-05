@@ -1,52 +1,166 @@
-<%= form_with(model: task) do |form| %>
+<%= form_with(model: @task, local: true) do |f| %>
   <% if task.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
-
-      <ul>
-        <% task.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+        <ul>
+          <% task.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
-  </div>
+  <div class="wrapper" id="<%= dom_id task %>">
+    <div class="column task-detail-list">
+      <h2>タスク追加</h2>
+      <div class="task-detail">
+        <ul class="task-detail-items">
+          <%# 完了ステータス　%>
+          <li class="detail-item no-wrap">
+            <div class="detail-column-name">
+              <h3 class="detail-name">
+                <%= f.label :完了ステータス, style: "display: block"%>
+              </h3>
+              <h3>
+                <%= f.check_box :complete_status %>
+              </h3>
+            </div>
+          </li>
+          <%# タスク名　%>
+          <li class="detail-item no-wrap">
+            <div class="detail-column-name">
+              <h3 class="detail-name">
+                <i class="fa-solid fa-list-check"></i>
+                タスク名
+              </h3>
+              <h3>
+                <%= f.text_field :name %>
+              </h3>
+            </div>
+          </li><br>
+          <%# 実施予定日　%>
+          <li class="detail-item no-wrap">
+            <div class="detail-column-name">
+              <h3 class="detail-name">
+                <i class="fa-solid fa-calendar"></i>
+                実施予定日
+              </h3>
+              <h3>
+                <%= f.date_field :start_date %>
+              </h3>
+            </div>
+          </li><br>
+          <%# 期限　%>
+          <li class="detail-item no-wrap">
+            <div class="detail-column-name">
+              <h3 class="detail-name">
+                <i class="fa-regular fa-calendar-check"></i>
+                期限
+              </h3>
+              <h3>
+                <%= f.date_field :end_date %><br>
+              </h3>
+            </div>
+          </li><br>
+          <%# リンク %>
+          <li class="detail-item no-wrap">
+            <div class="detail-column-name">
+              <h3 class="detail-name">
+                <i class="fa-solid fa-link"></i>
+                  リンク
+              </h3>
+              <h3>
+                <%= f.text_area :url %><br>
+              </h3>
+            </div>
+          </li><br>
+          <%# 添付　%>
+          <li class="detail-item no-wrap">
+            <div class="detail-column-name">
+              <h3 class="detail-name">
+                <i class="fa-regular fa-image"></i>
+                添付
+              </h3>
+              <h3>
+                <%= f.text_field :image %><br>
+              </h3>
+            </div>
+          </li><br>
+          <%# メモ　%>
+          <li class="detail-item no-wrap">
+            <div class="detail-column-name">
+              <h3 class="detail-name">
+                <i class="fa-regular fa-note-sticky"></i>
+                メモ
+              </h3>
+              <h3>
+                <%= f.text_area :note %><br>
+              </h3>
+            </div>
+          </li><br>
+        </ul>
+      </div>
+      <div>
+        <%= f.submit %>
+      </div>
+    </div>
 
-  <div>
-    <%= form.label :complete_status, style: "display: block" %>
-    <%= form.check_box :complete_status %>
-  </div>
 
-  <div>
-    <%= form.label :start_date, style: "display: block" %>
-    <%= form.date_field :start_date %>
-  </div>
-
-  <div>
-    <%= form.label :end_date, style: "display: block" %>
-    <%= form.date_field :end_date %>
-  </div>
-
-  <div>
-    <%= form.label :url, style: "display: block" %>
-    <%= form.text_area :url %>
-  </div>
-
-  <div>
-    <%= form.label :image, style: "display: block" %>
-    <%= form.text_field :image %>
-  </div>
-
-  <div>
-    <%= form.label :note, style: "display: block" %>
-    <%= form.text_area :note %>
-  </div>
-
-  <div>
-    <%= form.submit %>
+    <div class="column complete-list">
+      <h2>サブタスク</h2>
+      <div class="task-detail">
+        <%= f.fields_for :subtasks do |subtask| %>
+        <ul class="task-detail-items">
+          <%# 完了ステータス_サブタスク %>
+          <li class="detail-item no-wrap">
+            <div class="detail-column-name">
+              <h3 class="detail-name">
+                <%= subtask.label :完了ステータス, style: "display: block"%>
+              </h3>
+              <h3>
+                <%= subtask.check_box :complete_status_subtask %>
+              </h3>
+            </div>
+          </li><br>
+          <%# サブタスク名 %>
+          <li class="detail-item no-wrap">
+            <div class="detail-column-name">
+              <h3 class="detail-name">
+                <i class="fa-solid fa-list-check"></i>
+                サブタスク名
+              </h3>
+              <h3>
+                <%= subtask.text_field :name_subtask %>
+              </h3>
+            </div>
+          </li><br>
+          <%# 実施予定日_サブタスク %>
+          <li class="detail-item no-wrap">
+            <div class="detail-column-name">
+              <h3 class="detail-name">
+                <i class="fa-solid fa-calendar"></i>
+                実施予定日
+              </h3>
+              <h3>
+                <%= subtask.date_field :start_date_subtask %>
+              </h3>
+            </div>
+          </li><br>
+          <%# 期限_サブタスク %>
+          <li class="detail-item no-wrap">
+            <div class="detail-column-name">
+              <h3 class="detail-name">
+                <i class="fa-regular fa-calendar-check"></i>
+                期限
+              </h3>
+              <h3>
+                <%= subtask.date_field :end_date_subtask %><br>
+              </h3>
+            </div>
+          </li><br>
+        </ul>
+        <% end %>
+      </div>
+    </div>
   </div>
 <% end %>

@@ -17,7 +17,7 @@ class SubtasksControllerTest < ActionDispatch::IntegrationTest
 
   test "should create subtask" do
     assert_difference("Subtask.count") do
-      post subtasks_url, params: { subtask: { complete_status: @subtask.complete_status, end_date: @subtask.end_date, name: @subtask.name, start_date: @subtask.start_date, task_id: @subtask.task_id } }
+      post subtasks_url, params: { subtask: { complete_status: @subtask.complete_status_subtask, end_date: @subtask.end_date_subtask, name: @subtask.name_subtask, start_date: @subtask.start_date_subtask, task_id: @subtask.task_id } }
     end
 
     assert_redirected_to subtask_url(Subtask.last)
@@ -34,7 +34,7 @@ class SubtasksControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update subtask" do
-    patch subtask_url(@subtask), params: { subtask: { complete_status: @subtask.complete_status, end_date: @subtask.end_date, name: @subtask.name, start_date: @subtask.start_date, task_id: @subtask.task_id } }
+    patch subtask_url(@subtask), params: { subtask: { complete_status: @subtask.complete_status_subtask, end_date: @subtask.end_date_subtask, name: @subtask.name_subtask, start_date: @subtask.start_date_subtask, task_id: @subtask.task_id } }
     assert_redirected_to subtask_url(@subtask)
   end
 

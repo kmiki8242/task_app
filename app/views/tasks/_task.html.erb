@@ -1,8 +1,123 @@
-<div class="wrapper" id="<%= dom_id task %>">
+<div class="wrapper" id="<%= dom_id @task %>">
   <div class="column task-detail-list">
     <h2>タスク詳細</h2>
     <div class="task-detail">
-        <ul class="task-detail-items">
+      <ul class="task-detail-items">
+        <%# 完了ステータス　%>
+        <li class="detail-item no-wrap">
+          <div class="detail-column-name">
+            <h3 class="detail-name">
+              完了ステータス
+            </h3>
+            <h3>
+              <%= @task.complete_status %>
+            </h3>
+          </div>
+        </li>
+        <%# タスク名　%>
+        <li class="detail-item no-wrap">
+          <div class="detail-column-name">
+            <h3 class="detail-name">
+              <i class="fa-solid fa-list-check"></i>
+              タスク名
+            </h3>
+            <h3>
+              <%= @task.name %>
+            </h3>
+          </div>
+        </li><br>
+        <%# 実施予定日　%>
+        <li class="detail-item no-wrap">
+          <div class="detail-column-name">
+            <h3 class="detail-name">
+              <i class="fa-solid fa-calendar"></i>
+              実施予定日
+            </h3>
+            <h3>
+              <%= @task.start_date %>
+            </h3>
+          </div>
+        </li><br>
+        <%# 期限　%>
+        <li class="detail-item no-wrap">
+          <div class="detail-column-name">
+            <h3 class="detail-name">
+              <i class="fa-regular fa-calendar-check"></i>
+              期限
+            </h3>
+            <h3>
+              <%= @task.end_date %><br>
+            </h3>
+          </div>
+        </li><br>
+        <%# 実施予定日　%>
+        <li class="detail-item no-wrap">
+          <div class="detail-column-name">
+            <h3 class="detail-name">
+              <i class="fa-solid fa-link"></i>
+                リンク
+            </h3>
+            <h3>
+              <%= @task.url %><br>
+            </h3>
+          </div>
+        </li><br>
+        <%# 期限　%>
+        <li class="detail-item no-wrap">
+          <div class="detail-column-name">
+            <h3 class="detail-name">
+              <i class="fa-regular fa-image"></i>
+              添付
+            </h3>
+            <h3>
+              <%= @task.image %><br>
+            </h3>
+          </div>
+        </li><br>
+        <li class="detail-item no-wrap">
+          <div class="detail-column-name">
+            <h3 class="detail-name">
+              <i class="fa-regular fa-note-sticky"></i>
+              メモ
+            </h3>
+            <h3>
+              <%= @task.note %><br>
+            </h3>
+          </div>
+        </li><br>
+      </ul>
+    </div>
+  </div>
+
+  <div class="column complete-list">
+    <h2>サブタスク</h2>
+    <% @subtasks.each do |subtask| %>
+      <div class="subtask-detail">
+        <ul class="subtask-detail-items">
+          <%# 完了ステータス_サブタスク %>
+          <li class="detail-item no-wrap">
+            <div class="detail-column-name">
+              <h3 class="detail-name">
+                完了ステータス_サブタスク
+              </h3>
+              <h3>
+                <%= subtask.complete_status_subtask %>
+              </h3>
+            </div>
+          </li><br>
+          <%# サブタスク名 %>
+          <li class="detail-item no-wrap">
+            <div class="detail-column-name">
+              <h3 class="detail-name">
+                <i class="fa-solid fa-list-check"></i>
+                サブタスク名
+              </h3>
+              <h3>
+                <%= subtask.name_subtask %>
+              </h3>
+            </div>
+          </li><br>
+          <%# 実施予定日_サブタスク %>
           <li class="detail-item no-wrap">
             <div class="detail-column-name">
               <h3 class="detail-name">
@@ -10,60 +125,41 @@
                 実施予定日
               </h3>
               <h3>
-                <%= task.start_date %>
+                <%= subtask.start_date_subtask %>
               </h3>
             </div>
           </li><br>
-          <li>
+          <%# 期限_サブタスク %>
+          <li class="detail-item no-wrap">
             <div class="detail-column-name">
               <h3 class="detail-name">
                 <i class="fa-regular fa-calendar-check"></i>
                 期限
               </h3>
               <h3>
-                <%= task.end_date %><br>
-              </h3>
-            </div>
-          </li><br>
-          <li>
-            <div class="detail-column-name">
-              <h3 class="detail-name">
-                <i class="fa-solid fa-link"></i>
-                  リンク
-              </h3>
-              <h3>
-                <%= task.url %><br>
-              </h3>
-            </div>
-          </li><br>
-          <li>
-            <div class="detail-column-name">
-              <h3 class="detail-name">
-                <i class="fa-regular fa-image"></i>
-                添付
-              </h3>
-              <h3>
-                <%= task.image %><br>
-              </h3>
-            </div>
-          </li><br>
-          <li>
-            <div class="detail-column-name">
-              <h3 class="detail-name">
-                <i class="fa-regular fa-note-sticky"></i>
-                メモ
-              </h3>
-              <h3>
-                <%= task.note %><br>
+                <%= subtask.end_date_subtask %><br>
               </h3>
             </div>
           </li><br>
         </ul>
-    </div>
-  </div>
+      </div>
+    <% end %>
 
-  <div class="column complete-list">
-    <h2>サブタスク</h2>
+
+
+
+
+
+    <%
+=begin%>
+ <div id="subtasks">
+        <%= render '/subtasks/subtask' %>
+        <p>
+          <%= link_to "Show this subtask", subtask %>
+        </p>
+    </div> 
+<%
+=end%>
     <%
 =begin%>
  <div class="complete-tasks">
@@ -89,5 +185,60 @@
   </div> 
 <%
 =end%>
-
+      <%
+=begin%>
+ <div class="task-detail" id="<%= dom_id subtask %>">
+        <ul class="task-detail-items">
+          <%# 完了ステータス_サブタスク %>
+          <li class="detail-item no-wrap">
+            <div class="detail-column-name">
+              <h3 class="detail-name">
+                完了ステータス_サブタスク
+              </h3>
+              <h3>
+                <%= subtask.complete_status_subtask %>
+              </h3>
+            </div>
+          </li><br>
+          <%# サブタスク名 %>
+          <li class="detail-item no-wrap">
+            <div class="detail-column-name">
+              <h3 class="detail-name">
+                <i class="fa-solid fa-list-check"></i>
+                サブタスク名
+              </h3>
+              <h3>
+                <%= subtask.name_subtask %>
+              </h3>
+            </div>
+          </li><br>
+          <%# 実施予定日_サブタスク %>
+          <li class="detail-item no-wrap">
+            <div class="detail-column-name">
+              <h3 class="detail-name">
+                <i class="fa-solid fa-calendar"></i>
+                実施予定日
+              </h3>
+              <h3>
+                <%= subtask.start_date_subtask %>
+              </h3>
+            </div>
+          </li><br>
+          <%# 期限_サブタスク %>
+          <li class="detail-item no-wrap">
+            <div class="detail-column-name">
+              <h3 class="detail-name">
+                <i class="fa-regular fa-calendar-check"></i>
+                期限
+              </h3>
+              <h3>
+                <%= subtask.end_date_subtask %><br>
+              </h3>
+            </div>
+          </li><br>
+        </ul>
+      </div>
+    </div> 
+<%
+=end%>
 </div>

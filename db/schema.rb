@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_04_053033) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_04_120458) do
   create_table "subtasks", force: :cascade do |t|
-    t.string "name"
-    t.boolean "complete_status"
-    t.date "start_date"
-    t.date "end_date"
+    t.string "name_subtask"
+    t.boolean "complete_status_subtask"
+    t.date "start_date_subtask"
+    t.date "end_date_subtask"
     t.string "task_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
