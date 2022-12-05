@@ -3,7 +3,7 @@ class SubtasksController < ApplicationController
 
   # GET /subtasks or /subtasks.json
   def index
-    @subtasks = Subtask.all
+    @subtask = Subtask.all
   end
 
   # GET /subtasks/1 or /subtasks/1.json
@@ -65,6 +65,6 @@ class SubtasksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def subtask_params
-      params.require(:subtask).permit(:name, :complete_status, :start_date, :end_date, :task_id)
+      params.require(:subtask).permit(:name_subtask, :complete_status_subtask, :start_date_subtask, :end_date_subtask)
     end
 end
