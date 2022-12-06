@@ -16,7 +16,6 @@ class TasksTest < ApplicationSystemTestCase
 
     check "Complete status" if @task.complete_status
     fill_in "End date", with: @task.end_date
-    fill_in "Image", with: @task.image
     fill_in "Name", with: @task.name
     fill_in "Note", with: @task.note
     fill_in "Start date", with: @task.start_date
@@ -33,7 +32,6 @@ class TasksTest < ApplicationSystemTestCase
 
     check "Complete status" if @task.complete_status
     fill_in "End date", with: @task.end_date
-    fill_in "Image", with: @task.image
     fill_in "Name", with: @task.name
     fill_in "Note", with: @task.note
     fill_in "Start date", with: @task.start_date

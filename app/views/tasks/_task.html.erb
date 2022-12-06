@@ -3,26 +3,27 @@
     <h2>タスク詳細</h2>
     <div class="task-detail">
       <ul class="task-detail-items">
-        <%# 完了ステータス　%>
-        <li class="detail-item no-wrap">
-          <div class="detail-column">
-            <h3 class="detail-name">
-              完了ステータス
-            </h3>
-            <h3>
-              <%= @task.complete_status %>
-            </h3>
-          </div>
-        </li>
         <%# タスク名　%>
         <li class="detail-item no-wrap">
           <div class="detail-column">
             <h3 class="detail-name">
-              <i class="fa-solid fa-list-check"></i>
+              <i class="fa-solid fa-file-signature"></i>
               タスク名
             </h3>
             <h3>
               <%= @task.name %>
+            </h3>
+          </div>
+        </li><br>
+        <%# 完了ステータス　%>
+        <li class="detail-item no-wrap">
+          <div class="detail-column">
+            <h3 class="detail-name">
+              <i class="fa-solid fa-check"></i>
+              完了ステータス
+            </h3>
+            <h3>
+              <%= @task.complete_status %>
             </h3>
           </div>
         </li><br>
@@ -50,7 +51,7 @@
             </h3>
           </div>
         </li><br>
-        <%# 実施予定日　%>
+        <%# リンク %>
         <li class="detail-item no-wrap">
           <div class="detail-column">
             <h3 class="detail-name">
@@ -62,18 +63,7 @@
             </h3>
           </div>
         </li><br>
-        <%# 期限　%>
-        <li class="detail-item no-wrap">
-          <div class="detail-column">
-            <h3 class="detail-name">
-              <i class="fa-regular fa-image"></i>
-              添付
-            </h3>
-            <h3>
-              <%= @task.image %><br>
-            </h3>
-          </div>
-        </li><br>
+        <%# メモ %>
         <li class="detail-item no-wrap">
           <div class="detail-column">
             <h3 class="detail-name">
@@ -86,36 +76,43 @@
           </div>
         </li><br>
       </ul>
-      <%= link_to "編集", edit_task_path(@task) %>
-      <%= button_to "タスク全体を削除", @task, method: :delete %>
+      <div class="button-area">
+        <div class="edit-button">
+          <%= button_to "編集する", edit_task_path,  method: :get %>
+        </div>
+        <div class="delete-button">
+          <%= button_to "削除する", @task, method: :delete %>
+        </div>
+      </div>
     </div>
   </div>
 
   <div class="column complete-list">
-    <h2>サブタスク</h2>
+    <h2>サブタスク詳細</h2>
     <% @subtasks.each do |subtask| %>
       <div class="subtask-detail">
         <ul class="subtask-detail-items">
-          <%# 完了ステータス_サブタスク %>
-          <li class="detail-item no-wrap">
-            <div class="detail-column">
-              <h3 class="detail-name">
-                完了ステータス
-              </h3>
-              <h3>
-                <%= subtask.complete_status_subtask %>
-              </h3>
-            </div>
-          </li><br>
           <%# サブタスク名 %>
           <li class="detail-item no-wrap">
             <div class="detail-column">
               <h3 class="detail-name">
-                <i class="fa-solid fa-list-check"></i>
+                <i class="fa-solid fa-file-signature"></i>
                 サブタスク名
               </h3>
               <h3>
                 <%= subtask.name_subtask %>
+              </h3>
+            </div>
+          </li><br>
+          <%# 完了ステータス_サブタスク %>
+          <li class="detail-item no-wrap">
+            <div class="detail-column">
+              <h3 class="detail-name">
+                <i class="fa-solid fa-check"></i>
+                完了ステータス
+              </h3>
+              <h3>
+                <%= subtask.complete_status_subtask %>
               </h3>
             </div>
           </li><br>

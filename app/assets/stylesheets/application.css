@@ -19,6 +19,10 @@
   }
 }
 
+.task-list-title{
+  padding-bottom: 20px;
+}
+
 h1, h2{
   border-bottom: solid;
   border-color: #FFFFFF;
@@ -87,6 +91,14 @@ br {
 }
 
 /* task-detail */
+.task-detail-items{
+  margin-bottom: 4em;
+}
+
+.detail-item{
+  margin-bottom: 1em;
+}
+
 .detail-column{
   display: flex;
   width: 500px;
@@ -97,4 +109,21 @@ br {
 
 .detail-name{
   margin-right: auto;
+}
+
+.subtask_title{
+  display: flex;
+}
+
+.button-area{
+  display: flex;
+}
+
+.edit-button, .create-button{
+  padding-left: 40px;
+}
+
+.delete-button{
+  margin-right: auto;
+  padding-left: 350px;
 }
