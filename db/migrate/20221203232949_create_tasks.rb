@@ -6,7 +6,6 @@ class CreateTasks < ActiveRecord::Migration[7.0]
       t.date :start_date,         null: false
       t.date :end_date
       t.text :url
-      t.string :image
       t.text :note
 
       t.timestamps

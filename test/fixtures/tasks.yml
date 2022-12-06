@@ -6,7 +6,6 @@ one:
   start_date: 2022-12-04
   end_date: 2022-12-04
   url: MyText
-  image: MyString
   note: MyText
 
 two:
@@ -15,5 +14,4 @@ two:
   start_date: 2022-12-04
   end_date: 2022-12-04
   url: MyText
-  image: MyString
   note: MyText
