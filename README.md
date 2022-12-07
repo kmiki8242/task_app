@@ -46,4 +46,27 @@ https://www.figma.com/file/BjpdSQPM6b1qrXOndbBZup/Task-Management?node-id=0%3A1&
 - Ruby 2.7.6
 - Ruby on Rails 7.0.4
 - Postgre SQL 14.6
+
+# DB
+```mermaid
+erDiagram
+        tasks ||--o{ subtasks: ""
+        tasks {
+　　　string id
+           string name
+           boolean complete_status
+           datetime start_date
+           datetime end_date
+           text url
+           text note
+        }
+        subtasks {
+　　　         string id
+           string name_subtask
+           boolean complete_status_subtask
+           datetime start_date_subtask
+           datetime end_date_subtask
+           string task_id
+        }
+```
    
