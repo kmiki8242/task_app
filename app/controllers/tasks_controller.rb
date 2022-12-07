@@ -4,6 +4,7 @@ class TasksController < ApplicationController
   # GET /tasks or /tasks.json
   def index
     @uncomplete_tasks = Task.where(complete_status: 'false')
+    @uncomplete_tasks = Task.order("start_date")
     @complete_tasks = Task.where(complete_status: 'true')
   end
 
