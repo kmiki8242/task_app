@@ -1,7 +1,7 @@
 <%= form_with(model: @task, local: true) do |f| %>
   <% if task.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
+      <h2><%= pluralize(task.errors.count, "個のエラー") %> で保存に失敗しました:</h2>
         <ul>
           <% task.errors.each do |error| %>
             <li><%= error.full_message %></li>
@@ -93,7 +93,6 @@
         <%= f.submit %>
       </div>
     </div>
-
 
     <div class="column complete-list">
       <h2>サブタスク</h2>
